@@ -1,0 +1,452 @@
+[
+    {
+        "name": "Chicken Biryani",
+        "image": "https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg",
+        "calories": 400,
+        "carbs": 55,
+        "fats": 15,
+        "protein": 20,
+        "serving_size": "1 cup",
+        "type": "Rice Dish"
+    },
+    {
+        "name": "Nihari",
+        "image": "https://www.themealdb.com/images/media/meals/vtuyxu1711782685.jpg",
+        "calories": 450,
+        "carbs": 30,
+        "fats": 25,
+        "protein": 30,
+        "serving_size": "1 bowl",
+        "type": "Stew"
+    },
+    {
+        "name": "Samosa",
+        "image": "https://www.themealdb.com/images/media/meals/xxyupu1511304344.jpg",
+        "calories": 250,
+        "carbs": 30,
+        "fats": 15,
+        "protein": 5,
+        "serving_size": "1 piece",
+        "type": "Snack"
+    },
+    {
+        "name": "Aloo Gosht",
+        "image": "https://www.themealdb.com/images/media/meals/wwrrrw1503303326.jpg",
+        "calories": 500,
+        "carbs": 40,
+        "fats": 30,
+        "protein": 25,
+        "serving_size": "1 cup",
+        "type": "Curry"
+    },
+    {
+        "name": "Palak Paneer",
+        "image": "https://www.themealdb.com/images/media/meals/xyttxq1483567157.jpg",
+        "calories": 350,
+        "carbs": 20,
+        "fats": 25,
+        "protein": 20,
+        "serving_size": "1 cup",
+        "type": "Curry"
+    },
+    {
+        "name": "Chapati",
+        "image": "https://www.themealdb.com/images/media/meals/mtpxgk1503373256.jpg",
+        "calories": 100,
+        "carbs": 20,
+        "fats": 2,
+        "protein": 3,
+        "serving_size": "1 piece",
+        "type": "Bread"
+    },
+    {
+        "name": "Fruit Chaat",
+        "image": "https://www.themealdb.com/images/media/meals/yxsurp1511304301.jpg",
+        "calories": 150,
+        "carbs": 35,
+        "fats": 0,
+        "protein": 2,
+        "serving_size": "1 cup",
+        "type": "Snack"
+    },
+    {
+        "name": "Lassi",
+        "image": "https://www.themealdb.com/images/media/meals/9ws3jx1619696236.jpg",
+        "calories": 200,
+        "carbs": 30,
+        "fats": 5,
+        "protein": 8,
+        "serving_size": "1 glass",
+        "type": "Drink"
+    },
+    {
+        "name": "Biryani Raita",
+        "image": "https://www.themealdb.com/images/media/meals/x992hy1593349847.jpg",
+        "calories": 120,
+        "carbs": 10,
+        "fats": 7,
+        "protein": 4,
+        "serving_size": "1/2 cup",
+        "type": "Drink"
+    },
+    {
+        "name": "Karahi Chicken",
+        "image": "https://www.themealdb.com/images/media/meals/z0ageb1583189517.jpg",
+        "calories": 600,
+        "carbs": 10,
+        "fats": 45,
+        "protein": 40,
+        "serving_size": "1 bowl",
+        "type": "Curry"
+    },
+    {
+        "name": "Mango",
+        "image": "https://www.themealdb.com/images/ingredients/Mango.png",
+        "calories": 60,
+        "carbs": 15,
+        "fats": 0,
+        "protein": 0,
+        "serving_size": "1 medium",
+        "type": "Snack"
+    },
+    {
+        "name": "Banana",
+        "image": "https://www.themealdb.com/images/ingredients/Banana.png",
+        "calories": 105,
+        "carbs": 27,
+        "fats": 0,
+        "protein": 1,
+        "serving_size": "1 medium",
+        "type": "Snack"
+    },
+    {
+        "name": "Apple",
+        "image": "https://www.themealdb.com/images/ingredients/Apple.png",
+        "calories": 95,
+        "carbs": 25,
+        "fats": 0,
+        "protein": 0,
+        "serving_size": "1 medium",
+        "type": "Snack"
+    },
+    {
+        "name": "Orange",
+        "image": "https://www.themealdb.com/images/ingredients/Orange.png",
+        "calories": 62,
+        "carbs": 15,
+        "fats": 0,
+        "protein": 1,
+        "serving_size": "1 medium",
+        "type": "Snack"
+    },
+    {
+        "name": "Grapes",
+        "image": "https://www.themealdb.com/images/ingredients/Grapes.png",
+        "calories": 62,
+        "carbs": 16,
+        "fats": 0,
+        "protein": 1,
+        "serving_size": "1 cup",
+        "type": "Snack"
+    },
+    {
+        "name": "Spinach",
+        "image": "https://www.themealdb.com/images/ingredients/Spinach.png",
+        "calories": 23,
+        "carbs": 4,
+        "fats": 0,
+        "protein": 3,
+        "serving_size": "1 cup raw",
+        "type": "Snack"
+    },
+    {
+        "name": "Tomato",
+        "image": "https://www.themealdb.com/images/ingredients/Tomato.png",
+        "calories": 22,
+        "carbs": 5,
+        "fats": 0,
+        "protein": 1,
+        "serving_size": "1 medium",
+        "type": "Snack"
+    },
+    {
+        "name": "Onion",
+        "image": "https://www.themealdb.com/images/ingredients/Onion.png",
+        "calories": 44,
+        "carbs": 11,
+        "fats": 0,
+        "protein": 1,
+        "serving_size": "1 cup chopped",
+        "type": "Snack"
+    },
+    {
+        "name": "Cauliflower",
+        "image": "https://www.themealdb.com/images/ingredients/Cauliflower.png",
+        "calories": 25,
+        "carbs": 5,
+        "fats": 0,
+        "protein": 2,
+        "serving_size": "1 cup raw",
+        "type": "Snack"
+    },
+    {
+        "name": "Carrot",
+        "image": "https://www.themealdb.com/images/ingredients/Carrot.png",
+        "calories": 50,
+        "carbs": 12,
+        "fats": 0,
+        "protein": 1,
+        "serving_size": "1 cup raw",
+        "type": "Snack"
+    },
+    {
+        "name": "Pakora",
+        "image": "https://www.themealdb.com/images/media/meals/sa7mxr1565117298.jpg",
+        "calories": 320,
+        "carbs": 35,
+        "fats": 20,
+        "protein": 8,
+        "serving_size": "5 pieces",
+        "type": "Snack"
+    },
+    {
+        "name": "Chaat",
+        "image": "https://www.themealdb.com/images/media/meals/uanqvw1511131335.jpg",
+        "calories": 250,
+        "carbs": 40,
+        "fats": 10,
+        "protein": 5,
+        "serving_size": "1 cup",
+        "type": "Snack"
+    },
+    {
+        "name": "Dahi Bhalla",
+        "image": "https://www.themealdb.com/images/media/meals/uaslwq1512986891.jpg",
+        "calories": 300,
+        "carbs": 45,
+        "fats": 10,
+        "protein": 10,
+        "serving_size": "5 pieces",
+        "type": "Snack"
+    },
+    {
+        "name": "Chikki",
+        "image": "https://www.themealdb.com/images/media/meals/ssxvup1468250598.jpg",
+        "calories": 150,
+        "carbs": 25,
+        "fats": 5,
+        "protein": 2,
+        "serving_size": "1 piece",
+        "type": "Snack"
+    },
+    {
+        "name": "Tea",
+        "image": "https://www.themealdb.com/images/media/meals/xqwuqu1487348734.jpg",
+        "calories": 2,
+        "carbs": 0,
+        "fats": 0,
+        "protein": 0,
+        "serving_size": "1 cup",
+        "type": "Drink"
+    },
+    {
+        "name": "Coffee",
+        "image": "https://www.themealdb.com/images/media/meals/sxtqpt1454513016.jpg",
+        "calories": 2,
+        "carbs": 0,
+        "fats": 0,
+        "protein": 0,
+        "serving_size": "1 cup",
+        "type": "Drink"
+    },
+    {
+        "name": "Soft Drink",
+        "image": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg",
+        "calories": 140,
+        "carbs": 39,
+        "fats": 0,
+        "protein": 0,
+        "serving_size": "1 can",
+        "type": "Drink"
+    },
+    {
+        "name": "Sugarcane Juice",
+        "image": "https://www.themealdb.com/images/media/meals/n7qnkb1630444639.jpg",
+        "calories": 180,
+        "carbs": 48,
+        "fats": 0,
+        "protein": 0,
+        "serving_size": "1 glass",
+        "type": "Drink"
+    },
+    {
+        "name": "Seekh Kebabs",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 300,
+        "carbs": 5,
+        "fats": 20,
+        "protein": 25,
+        "serving_size": "2 pieces",
+        "type": "Grilled Meat"
+    },
+    {
+        "name": "Shami Kebabs",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 250,
+        "carbs": 10,
+        "fats": 15,
+        "protein": 20,
+        "serving_size": "2 pieces",
+        "type": "Grilled Meat"
+    },
+    {
+        "name": "Chicken Tikka",
+        "image": "https://www.themealdb.com/images/media/meals/2d8m9e1583189320.jpg",
+        "calories": 400,
+        "carbs": 5,
+        "fats": 30,
+        "protein": 35,
+        "serving_size": "1 plate",
+        "type": "Grilled Meat"
+    },
+    {
+        "name": "Beef Kebab",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 350,
+        "carbs": 0,
+        "fats": 25,
+        "protein": 30,
+        "serving_size": "2 pieces",
+        "type": "Grilled Meat"
+    },
+    {
+        "name": "Puri",
+        "image": "https://www.themealdb.com/images/media/meals/8n8b4m1583189255.jpg",
+        "calories": 150,
+        "carbs": 25,
+        "fats": 5,
+        "protein": 2,
+        "serving_size": "2 pieces",
+        "type": "Bread"
+    },
+    {
+        "name": "Halwa",
+        "image": "https://www.themealdb.com/images/media/meals/1u8b6m1583189194.jpg",
+        "calories": 300,
+        "carbs": 40,
+        "fats": 10,
+        "protein": 5,
+        "serving_size": "1 serving",
+        "type": "Breakfast"
+    },
+    {
+        "name": "Paratha",
+        "image": "https://www.themealdb.com/images/media/meals/7t8c8l1583189123.jpg",
+        "calories": 250,
+        "carbs": 30,
+        "fats": 15,
+        "protein": 5,
+        "serving_size": "1 piece",
+        "type": "Bread"
+    },
+    {
+        "name": "Daal Makhani",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 350,
+        "carbs": 40,
+        "fats": 15,
+        "protein": 15,
+        "serving_size": "1 cup",
+        "type": "Curry"
+    },
+    {
+        "name": "Chana Masala",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 300,
+        "carbs": 50,
+        "fats": 5,
+        "protein": 15,
+        "serving_size": "1 cup",
+        "type": "Curry"
+    },
+    {
+        "name": "Bun Kebab",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 400,
+        "carbs": 45,
+        "fats": 15,
+        "protein": 15,
+        "serving_size": "1 piece",
+        "type": "Fast Food"
+    },
+    {
+        "name": "Aloo Tikki",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 200,
+        "carbs": 30,
+        "fats": 10,
+        "protein": 5,
+        "serving_size": "2 pieces",
+        "type": "Snack"
+    },
+    {
+        "name": "Burgers",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 500,
+        "carbs": 40,
+        "fats": 30,
+        "protein": 20,
+        "serving_size": "1 piece",
+        "type": "Fast Food"
+    },
+    {
+        "name": "Pasta",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 400,
+        "carbs": 60,
+        "fats": 10,
+        "protein": 15,
+        "serving_size": "1 cup",
+        "type": "Fast Food"
+    },
+    {
+        "name": "Fried Rice",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 500,
+        "carbs": 70,
+        "fats": 15,
+        "protein": 10,
+        "serving_size": "1 cup",
+        "type": "Rice Dish"
+    },
+    {
+        "name": "Dhokla",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 150,
+        "carbs": 25,
+        "fats": 5,
+        "protein": 5,
+        "serving_size": "1 piece",
+        "type": "Snack"
+    },
+    {
+        "name": "Pav Bhaji",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 400,
+        "carbs": 60,
+        "fats": 15,
+        "protein": 10,
+        "serving_size": "1 plate",
+        "type": "Fast Food"
+    },
+    {
+        "name": "Kheer",
+        "image": "https://www.themealdb.com/images/media/meals/4p1b6n1583189418.jpg",
+        "calories": 200,
+        "carbs": 30,
+        "fats": 5,
+        "protein": 5,
+        "serving_size": "1 bowl",
+        "type": "Dessert"
+    }
+]
