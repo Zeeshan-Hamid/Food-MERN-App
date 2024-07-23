@@ -1,0 +1,39 @@
+.container{
+    width: 92%;
+    margin: auto;
+    height: 50vh;
+    border-radius: 20px;
+    background-color: var(--bg);
+    background: var(--gradient);
+    color: #fff;
+    box-shadow: var(--shadow);
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 1rem;
+    place-items: center;
+}
+
+.left{
+    margin-left: 20px;
+    
+}
+
+.right{
+}
+.right-logo{
+    width: 200px !important;
+}
+
+.btn{
+    background: var(--bg);
+    background: var(--gradient);
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 50px;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
