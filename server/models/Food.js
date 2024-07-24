@@ -1,6 +1,7 @@
 const foodData = require('../data/data.json')
 const mongoose = require('mongoose')
 
+
 const foodSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -34,7 +35,7 @@ const foodSchema = new mongoose.Schema({
         type: String,
         required: true
   }
-});
+}, {timestamps: true});
 
 
 module.exports = mongoose.model('Food', foodSchema)
