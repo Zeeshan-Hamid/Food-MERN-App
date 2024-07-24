@@ -6,7 +6,9 @@ const foodController = require('../controllers/food')
 
 router.get('/', foodController.getAll)
 
-router.get("/food", );
+router.get("/search", foodController.searchFood);
+
+router.get("/food/:id", foodController.getFood);
 
 
 

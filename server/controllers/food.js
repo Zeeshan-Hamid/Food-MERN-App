@@ -4,8 +4,32 @@ const foodItems = require("../data/data.json");
 exports.getAll = async (req, res, next) => {
   try {
     const limit = parseInt(req.query.limit) || 8;
-    const data = await Food.find().sort({ calories: -1 }).limit(limit);
+    const data = await Food.aggregate([{ $sample: { size: limit } }]);
     res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.getFood = async (req, res, next) => {
+  try {
+    const foodId = req.params.id;
+    const specificFood = await Food.find({ _id: foodId });
+    if (!specificFood) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    res.status(200).json(specificFood);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.searchFood = async (req, res, next) => {
+  try {
+    const search = req.query.search || "";
+    const food = await Food.find({ name: { $regex: search, $options: "i" } });
+    res.status(200).json(food);
   } catch (error) {
     console.log(error);
   }

@@ -1,40 +1,49 @@
-import { NavLink } from "react-router-dom";
-import { FaSearchengin } from "react-icons/fa";
-import Logo from "../../assets/react.svg";
+// src/components/Header.js
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaSearch, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FiMenu } from "react-icons/fi";
 import "./style.css";
 
-const Navbar = () => {
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <>
-      <nav className="navbar">
-        <div className="logo-container">
-          <img src={Logo} alt="logo" className="logo" />
+    <nav className="nav">
+      <div className="logo">Calorie</div>
+      <div className="hamburger" onClick={toggleMenu}>
+        <FiMenu />
+      </div>
+      <div className={`menu ${isOpen ? "open" : ""}`}>
+        <Link to="/" className="menu-item">
+          Home
+        </Link>
+        <Link to="/about" className="menu-item">
+          About
+        </Link>
+        <Link to="/services" className="menu-item">
+          Services
+        </Link>
+        <Link to="/portfolio" className="menu-item">
+          Portfolio
+        </Link>
+        <Link to="/contact" className="menu-item">
+          Contact
+        </Link>
+        <div className="icons">
+          <Link to={"/search"}>
+            <FaSearch />
+          </Link>
+          <FaLinkedin />
+          <FaGithub />
         </div>
-        <div className="sub-nav">
-          <ul className="nav-list">
-            <li className="nav-links">
-              <NavLink className=" active nav-links-a" to={"/"}>
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-links">
-              <NavLink className="nav-links-a" to={"/food"}>
-                Food
-              </NavLink>{" "}
-            </li>
-            <li className="nav-links">
-              <NavLink className="nav-links-a" to={"/signup"}>
-                Login
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-        <div className="side-menu">
-          <FaSearchengin className="search-icon" />
-        </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 
-export default Navbar;
+export default Header;

@@ -1,17 +1,18 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import Navbar from "./components/Navbar/Navbar";
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-} from "react-router-dom";
-const App = () => {
-  const router = createBrowserRouter(
-    createRoutesFromElements(<Route index element={<HomePage />} />)
-  );
+import SearchPage from "./pages/SearchPage";
+import DetailPage from "./pages/DetailPage";
 
-  return <RouterProvider router={router} />;
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/food/:id" element={<DetailPage />} />
+      </Routes>
+    </Router>
+  );
 };
 
 export default App;

@@ -3,8 +3,6 @@
     margin: auto;
     height: 50vh;
     border-radius: 20px;
-    background-color: var(--bg);
-    background: var(--gradient);
     color: #fff;
     box-shadow: var(--shadow);
     display: grid; 
