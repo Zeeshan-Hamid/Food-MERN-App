@@ -29,3 +29,10 @@
             color: #555;
             margin-top: 10px;
         }
+
+        @media (max-width: 768px){
+          .grid-4{
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+          }  
+        }

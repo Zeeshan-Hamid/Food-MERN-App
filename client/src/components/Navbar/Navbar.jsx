@@ -1,11 +1,11 @@
 // src/components/Header.js
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaSearch, FaLinkedin, FaGithub } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
 import "./style.css";
 
-const Header = () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -14,30 +14,27 @@ const Header = () => {
 
   return (
     <nav className="nav">
-      <div className="logo">Calorie</div>
+      <NavLink to="/">
+        <div className="logo">Calorie</div>
+      </NavLink>
       <div className="hamburger" onClick={toggleMenu}>
         <FiMenu />
       </div>
       <div className={`menu ${isOpen ? "open" : ""}`}>
-        <Link to="/" className="menu-item">
+        <NavLink to="/" className="menu-item">
           Home
-        </Link>
-        <Link to="/about" className="menu-item">
-          About
-        </Link>
-        <Link to="/services" className="menu-item">
-          Services
-        </Link>
-        <Link to="/portfolio" className="menu-item">
-          Portfolio
-        </Link>
-        <Link to="/contact" className="menu-item">
-          Contact
-        </Link>
+        </NavLink>
+        <NavLink to="/food" className="menu-item">
+          Food
+        </NavLink>
+        <NavLink to="/login" className="menu-item">
+          Login
+        </NavLink>
+
         <div className="icons">
-          <Link to={"/search"}>
+          <NavLink to={"/search"}>
             <FaSearch />
-          </Link>
+          </NavLink>
           <FaLinkedin />
           <FaGithub />
         </div>
@@ -46,4 +43,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

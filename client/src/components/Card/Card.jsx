@@ -14,9 +14,9 @@ const Card = ({ foodItems }) => {
           <Link to={`/food/${item._id}`}>
             <img src={item.image} alt="Food Image"></img>
             <div className="card-body">
-              <h2 class="card-title">{item.name}</h2>
-              <p class="card-text">Calories: {item.calories}</p>
-              <p class="card-text">Serving: {item.serving_size}</p>
+              <h2 className="card-title">{item.name}</h2>
+              <p className="card-text">Calories: {item.calories}</p>
+              <p className="card-text">Serving: {item.serving_size}</p>
             </div>
           </Link>
         </div>

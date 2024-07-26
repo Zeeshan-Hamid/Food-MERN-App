@@ -5,7 +5,7 @@
   align-items: center;
   background-color: #C10008;
   padding: 25px 40px;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .logo {
@@ -44,7 +44,7 @@
 .icons svg {
   color: white;
   margin: 0 5px;
-  font-size: 1.2rem;
+  font-size: 22px;
 }
 
 @media (max-width: 768px) {
