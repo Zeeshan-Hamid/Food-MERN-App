@@ -20,11 +20,18 @@ exports.Signup = async (req, res, next) => {
       email: email,
       password: password,
     });
-    const id = user._id;
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_KEY, {
+      expiresIn: 3 * 24 * 60 * 60,
+    });
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: false, // Set to true if using https
+      sameSite: "Strict",
+    });
 
     res.status(200).json({
       error: "none",
-
       message: "User signed up successfully",
       user,
     });
@@ -45,14 +52,17 @@ exports.Login = async (req, res, next) => {
       return res.json({ message: "Invalid password" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_KEY);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_KEY, {
+      expiresIn: 3 * 24 * 60 * 60,
+    });
     res.cookie("token", token, {
-      withCredentials: true,
       httpOnly: true,
+      secure: false, // Set to true if using https
+      sameSite: "Strict",
     });
 
     res.status(200).json({
-      status: true,
+      status: "Fine",
       message: "User logged In",
       user,
     });

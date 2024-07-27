@@ -1,12 +1,31 @@
-// src/components/Header.js
+// src/components/Navbar.js
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaSearch, FaLinkedin, FaGithub } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
+import axios from "axios";
+import { useCookies } from "react-cookie";
 import "./style.css";
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, username }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cookies, removeCookie] = useCookies(["token"]);
+  const navigate = useNavigate();
+
+  const Logout = async () => {
+    try {
+      await axios.post(
+        "http://localhost:5000/logout",
+        {},
+        { withCredentials: true }
+      );
+
+      removeCookie("token", { path: "/" });
+      navigate("/login");
+    } catch (error) {
+      console.log("Logout error:", error);
+    }
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -27,9 +46,24 @@ const Navbar = () => {
         <NavLink to="/food" className="menu-item">
           Food
         </NavLink>
-        <NavLink to="/login" className="menu-item">
-          Login
-        </NavLink>
+
+        {isLoggedIn ? (
+          <>
+            <p>Hello {username}</p>
+            <button className="btn" onClick={Logout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <NavLink to="/login" className="menu-item">
+              Login
+            </NavLink>
+            <NavLink to="/signup" className="menu-item">
+              Signup
+            </NavLink>
+          </>
+        )}
 
         <div className="icons">
           <NavLink to={"/search"}>

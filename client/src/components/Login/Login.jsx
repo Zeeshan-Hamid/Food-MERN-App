@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
 import axios from "axios";
 import "./style.css";
 
@@ -12,13 +13,17 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
       setMessage(response.data.message);
       console.log("response data status", response.data.status);
-      if (response.data.status === true) {
+      if (response.data.status === "Fine") {
         navigate("/");
       }
     } catch (error) {
@@ -28,6 +33,7 @@ const Login = () => {
 
   return (
     <>
+      <Navbar />
       <h1>Login Form</h1>
       <br />
       <form onSubmit={handleLogin} method="post">

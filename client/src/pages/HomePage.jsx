@@ -1,51 +1,56 @@
+// src/pages/HomePage.js
 import Navbar from "../components/Navbar/Navbar";
 import FoodList from "../components/FoodList/FoodList";
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [cookies, removeCookie] = useCookies([]);
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [username, setUsername] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // New state to track login status
+
   useEffect(() => {
     const verifyCookie = async () => {
-      // if (!cookies.token) {
-      //   navigate("/login");
-      // }
-      console.log(cookies.token);
-      const { data } = await axios.post(
-        "http://localhost:5000/verify",
-        {},
-        { withCredentials: true }
-      );
-      const { status, user } = data;
-      setUsername(user);
-      return status
-        ? toast(`Hello ${user}`, {
+      try {
+        const { data } = await axios.post(
+          "http://localhost:5000/verify",
+          {},
+          { withCredentials: true }
+        );
+
+        if (data.status) {
+          console.log("User:", data.user.userName);
+          setUsername(data.user.userName);
+          setIsLoggedIn(true); // User is logged in
+          toast(`Hello ${data.user.userName}`, {
             position: "top-right",
-          })
-        : (removeCookie("token"), navigate("/login"));
+          });
+        } else {
+          removeCookie("token", {
+            path: "/",
+            sameSite: "Strict",
+            secure: true,
+          });
+          setIsLoggedIn(false); // User is not logged in
+          navigate("/login");
+        }
+      } catch (error) {
+        console.log("Verification error:", error);
+        setIsLoggedIn(false); // User is not logged in
+        navigate("/login");
+      }
     };
     verifyCookie();
   }, [cookies, navigate, removeCookie]);
-  const Logout = () => {
-    removeCookie("token");
-    navigate("/signup");
-  };
+
   return (
     <>
-      <Navbar />
-      <div className="home_page">
-        <h4>
-          {" "}
-          Welcome <span>{username}</span>
-        </h4>
-        <button onClick={Logout}>LOGOUT</button>
-      </div>
+      <Navbar isLoggedIn={isLoggedIn} username={username} />
       <ToastContainer />
       <FoodList />
     </>

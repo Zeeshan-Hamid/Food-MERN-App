@@ -11,8 +11,9 @@ dbConnect();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
-    credentials: true,
+    origin: "http://localhost:3000", // Match the frontend origin
+    credentials: true, // Important for sending cookies
+    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
   })
 );
 app.use(cookieParser());
