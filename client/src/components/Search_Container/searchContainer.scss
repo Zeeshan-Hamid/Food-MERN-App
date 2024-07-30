@@ -1,0 +1,56 @@
+@import '../../styles/responsive.scss';
+@import '../../styles/var.scss';
+
+.searchContainer{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 20px;
+    width: 300px;
+    box-shadow: 5px 5px 10px #555;
+    position: relative;
+
+    &.hide{
+        display: none;
+    }
+
+    .cross{
+        position: absolute;
+        right: 5%;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: #fff;
+        border: none;
+        padding: 5px;
+        box-shadow: 1px 2px 6px #666;
+        border-radius: 4px;
+        
+    }
+    
+    .noUnderLine{
+        text-decoration: none;
+        color: black;
+    }
+    .searchItems{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 10px;
+
+        .searchImage{
+        img{
+            width: 75px;
+        }
+        }
+
+        .searchText{
+            h2{
+                font-size: 20px;
+                font-weight: 300;
+            }
+        }
+    }
+
+    .errorText{
+        padding: -10px;
+    }
+}

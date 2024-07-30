@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
+import "./style.css";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -32,8 +34,9 @@ const Signup = () => {
 
   return (
     <>
-      <h1>Signup page</h1>
-      <form onSubmit={handleSubmit} method="post">
+      <Navbar />
+      <h1 className="signup-form-title">Signup Page</h1>
+      <form onSubmit={handleSubmit} method="post" className="signup-form">
         <input
           type="email"
           name="email"
@@ -43,6 +46,7 @@ const Signup = () => {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
+          className="signup-form-input"
         />
         <input
           type="text"
@@ -51,6 +55,7 @@ const Signup = () => {
           placeholder="Enter your name"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
+          className="signup-form-input"
         />
         <input
           type="password"
@@ -59,8 +64,11 @@ const Signup = () => {
           value={password}
           placeholder="Enter your password"
           onChange={(e) => setPassword(e.target.value)}
+          className="signup-form-input"
         />
-        <button type="submit">Signup</button>
+        <button type="submit" className="signup-form-button">
+          Signup
+        </button>
       </form>
     </>
   );

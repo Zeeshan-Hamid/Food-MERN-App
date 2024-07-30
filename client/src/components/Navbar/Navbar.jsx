@@ -1,16 +1,51 @@
-// src/components/Navbar.js
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaLinkedin, FaGithub } from "react-icons/fa";
+import { ImCancelCircle } from "react-icons/im";
 import { FiMenu } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
+import SearchContainer from "../Search_Container/SearchContainer";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import "./style.css";
+import "./navbar.scss";
 
 const Navbar = ({ isLoggedIn, username }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(false);
+  const [search, setSearch] = useState("");
+  const [container, setContainer] = useState(false);
+  const [foodItems, setFoodItems] = useState([]);
   const [cookies, removeCookie] = useCookies(["token"]);
   const navigate = useNavigate();
+
+  const searchUrl = "http://localhost:5000/api/search";
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      if (search.length >= 2) {
+        searchFoodItems();
+        setContainer(true);
+      } else {
+        setFoodItems([]);
+        setContainer(false); 
+      }
+    }, 300); 
+
+    return () => {
+      clearTimeout(handler); 
+    };
+  }, [search]);
+
+  const searchFoodItems = async () => {
+    try {
+      let url = `${searchUrl}?search=${search}`;
+      const { data } = await axios.get(url);
+      console.log(data);
+      setFoodItems(data);
+    } catch (error) {
+      console.log("Error occurred", error);
+    }
+  };
 
   const Logout = async () => {
     try {
@@ -31,49 +66,106 @@ const Navbar = ({ isLoggedIn, username }) => {
     setIsOpen(!isOpen);
   };
 
-  return (
-    <nav className="nav">
-      <NavLink to="/">
-        <div className="logo">Calorie</div>
-      </NavLink>
-      <div className="hamburger" onClick={toggleMenu}>
-        <FiMenu />
-      </div>
-      <div className={`menu ${isOpen ? "open" : ""}`}>
-        <NavLink to="/" className="menu-item">
-          Home
-        </NavLink>
-        <NavLink to="/food" className="menu-item">
-          Food
-        </NavLink>
+  const toggleUser = () => {
+    setUser(!user);
+  };
 
-        {isLoggedIn ? (
+  return (
+    <>
+      <nav className="navbar">
+        <div className="icon">
+          <Link to={"/"}>
+            <img src="/logo.png" alt="" />
+          </Link>
+        </div>
+        <div className="searchBar">
+          <input
+            type="text"
+            placeholder="Search Item here"
+            name="search"
+            autoComplete="off"
+            onChange={({ currentTarget: input }) => setSearch(input.value)}
+          />
+          <FaSearch className="searchIcon" />
+          <div className="foodContainer">
+            {container ? <SearchContainer foodItems={foodItems} /> : ""}
+          </div>
+        </div>
+        <div className="menu">
+          <div className="user">
+            {isLoggedIn ? (
+              <button onClick={() => toggleUser()}>
+                <CgProfile />
+              </button>
+            ) : (
+              ""
+            )}
+            <div className={user ? "userContainer active" : "userContainer"}>
+              {isLoggedIn ? (
+                <>
+                  <CgProfile />
+                  <p>{username}</p>
+                  <button
+                    onClick={() => {
+                      Logout();
+                    }}>
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button>Login</button>
+                </>
+              )}
+            </div>
+          </div>
+          <button
+            onClick={() => {
+              toggleMenu();
+            }}>
+            {!isOpen ? <FiMenu /> : <ImCancelCircle />}
+          </button>
+        </div>
+      </nav>
+
+      <div className={isOpen === true ? "subMenu active" : "subMenu"}>
+        <Link className="noUnderLine" to={"/"}>
+          Home
+        </Link>
+        <Link className="noUnderLine" to={"/"}>
+          Food
+        </Link>
+        {!isLoggedIn ? (
           <>
-            <p>Hello {username}</p>
-            <button className="btn" onClick={Logout}>
-              Logout
-            </button>
+            <Link className="noUnderLine" to={"/login"}>
+              Login
+            </Link>
+            <Link className="noUnderLine" to={"/"}>
+              Signup
+            </Link>
           </>
         ) : (
           <>
-            <NavLink to="/login" className="menu-item">
-              Login
-            </NavLink>
-            <NavLink to="/signup" className="menu-item">
-              Signup
-            </NavLink>
+            <Link
+              className="noUnderLine"
+              onClick={() => {
+                Logout();
+              }}>
+              LogOut
+            </Link>
           </>
         )}
-
-        <div className="icons">
-          <NavLink to={"/search"}>
-            <FaSearch />
-          </NavLink>
+        <div className="logo">
           <FaLinkedin />
           <FaGithub />
         </div>
       </div>
-    </nav>
+      <div
+        className={isOpen ? "shadow active" : "shadow"}
+        onClick={() => {
+          toggleMenu();
+        }}></div>
+    </>
   );
 };
 

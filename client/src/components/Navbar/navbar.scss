@@ -1,0 +1,183 @@
+@import '../../styles/responsive.scss';
+@import '../../styles/var.scss';
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    background-color: $primary;
+    padding: 0 50px;
+    @include sm{
+        height: 80px;
+        padding: 0 10px;
+    }
+
+    .icon{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        img{
+            width: 50px;
+        }
+        span{
+            font-size: 24px;
+            font-weight: bold;
+            @include sm{
+                display: none;
+            }
+        }
+        @include sm{
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    .searchBar{
+        position: relative;
+        input{
+            padding: 10px;
+            border: none;
+            font-size: 16px;
+            font-style: italic;
+            border-radius: 250px;
+            width: 300px;
+
+
+            @include sm{
+                width: 250px;
+            }
+
+            @include mini{
+                width: 200px;
+            }
+            
+            
+        }
+        .searchIcon{
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(-50%, -50%);
+            color: #999;
+            cursor: pointer;
+        }
+
+        .foodContainer{
+            position: absolute;
+            top: 105%;
+            left: 0%;
+             }
+    }
+    .menu{
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-size: 25px;
+        gap: 10px;
+        
+        .user{
+            position: relative;
+
+            .userContainer{
+                position: absolute;
+                top: 100%;
+                right: -100%;
+                transition: all 0.8s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: black;
+            box-shadow: 2px 3px 5px #666;
+            text-align: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            
+
+            button{
+                font-size: 14px;
+                border-radius: 50px;
+                padding: 5px 10px;
+                background-color: $primary;
+            }
+            display: none;
+
+            &.active{
+                display: initial;
+            }
+        }
+        }
+
+        button{
+        color: #fff;
+        font-size: 25px;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        }
+
+    }
+
+}
+
+.subMenu{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    @include lg{
+        width: 25%;
+    }
+    @include md{
+        width: 35%;
+    }
+    @include sm{
+        width: 50%
+    }
+    
+    justify-content: center;
+    background-color: #333333e5;
+    gap: 25px;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    left: -50%;
+    transition: all 0.4s ease;
+    z-index: 10;
+    &.active{
+        left: 0;
+    }
+    
+  
+    .noUnderLine{
+        text-decoration: none;
+        color: #fff;
+    }
+    .logo{
+        color: #fff;
+        font-size: 25px;
+        display: flex;
+        gap: 10px;
+    }
+}
+
+.shadow{
+    height: 100vh;
+    background-color: #3333336c;
+    width: 100vw;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    display: none;
+
+    &.active{
+        display: inherit;
+    }
+}
+

@@ -20,7 +20,9 @@
     "react-router": "^6.25.1",
     "react-router-dom": "^6.25.1",
     "react-spinners": "^0.14.1",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "sass": "^1.77.8",
+    "scss": "^0.2.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

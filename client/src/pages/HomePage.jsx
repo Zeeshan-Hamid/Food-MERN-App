@@ -1,4 +1,4 @@
-// src/pages/HomePage.js
+import Hero from "../components/Hero/Hero";
 import Navbar from "../components/Navbar/Navbar";
 import FoodList from "../components/FoodList/FoodList";
 import { useEffect, useState } from "react";
@@ -27,9 +27,6 @@ const HomePage = () => {
           console.log("User:", data.user.userName);
           setUsername(data.user.userName);
           setIsLoggedIn(true); // User is logged in
-          toast(`Hello ${data.user.userName}`, {
-            position: "top-right",
-          });
         } else {
           removeCookie("token", {
             path: "/",
@@ -37,7 +34,6 @@ const HomePage = () => {
             secure: true,
           });
           setIsLoggedIn(false); // User is not logged in
-          navigate("/login");
         }
       } catch (error) {
         console.log("Verification error:", error);
@@ -51,6 +47,7 @@ const HomePage = () => {
   return (
     <>
       <Navbar isLoggedIn={isLoggedIn} username={username} />
+      {/* <Hero /> */}
       <ToastContainer />
       <FoodList />
     </>

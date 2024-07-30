@@ -1,9 +1,10 @@
-.form-title {
+/* SignupForm.css */
+.signup-form-title {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.login-form {
+.signup-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +16,7 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.form-input {
+.signup-form-input {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -24,9 +25,9 @@
   font-size: 14px;
 }
 
-.form-button {
+.signup-form-button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #28a745;
   color: white;
   border: none;
   border-radius: 4px;
@@ -34,6 +35,6 @@
   transition: background-color 0.3s ease;
 }
 
-.form-button:hover {
-  background-color: #0056b3;
+.signup-form-button:hover {
+  background-color: #218838;
 }

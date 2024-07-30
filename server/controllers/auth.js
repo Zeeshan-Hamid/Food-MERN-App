@@ -62,11 +62,12 @@ exports.Login = async (req, res, next) => {
     });
 
     res.status(200).json({
-      status: "Fine",
+      status: "success",
       message: "User logged In",
       user,
     });
   } catch (error) {
+  
     console.log(error);
   }
 };

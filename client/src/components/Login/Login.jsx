@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./style.css";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,22 +22,26 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-      setMessage(response.data.message);
-      console.log("response data status", response.data.status);
-      if (response.data.status === "Fine") {
+
+      console.log("response data status", response.data);
+      if (response.data.status === "success") {
         navigate("/");
+      } else {
+        toast("Invalid email or password", {
+          position: "top-right",
+        });
       }
     } catch (error) {
-      setMessage("Login Failed");
+      console.log(error);
     }
   };
 
   return (
     <>
       <Navbar />
-      <h1>Login Form</h1>
+      <h1 className="form-title">Login Form</h1>
       <br />
-      <form onSubmit={handleLogin} method="post">
+      <form onSubmit={handleLogin} method="post" className="login-form">
         <input
           type="email"
           name="email"
@@ -45,6 +50,7 @@ const Login = () => {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
+          className="form-input"
         />
         <br />
         <input
@@ -56,11 +62,13 @@ const Login = () => {
           onChange={(e) => {
             setPassword(e.target.value);
           }}
+          className="form-input"
         />
-        <button type="submit">Login</button>
+        <button type="submit" className="form-button">
+          Login
+        </button>
       </form>
-      <br />
-      {message && <p>{message}</p>}
+      <ToastContainer />
     </>
   );
 };
