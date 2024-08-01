@@ -28,7 +28,21 @@ exports.getFood = async (req, res, next) => {
 exports.searchFood = async (req, res, next) => {
   try {
     const search = req.query.search || "";
-    const food = await Food.find({ name: { $regex: search, $options: "i" } });
+    const food = await Food.find({
+      name: { $regex: search, $options: "i" },
+    }).limit(1);
+    res.status(200).json(food);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.fullSearch = async (req, res, next) => {
+  try {
+    const search = req.query.search || "";
+    const food = await Food.find({
+      name: { $regex: search, $options: "i" },
+    });
     res.status(200).json(food);
   } catch (error) {
     console.log(error);

@@ -23,13 +23,14 @@ const Login = () => {
         { withCredentials: true }
       );
 
-      console.log("response data status", response.data);
-      if (response.data.status === "success") {
+      
+      if (response) {
+        console.log("response data status", response.data);
+        localStorage.setItem("user", JSON.stringify(response.data.user._doc));
+        toast.success("Congratulations!");
         navigate("/");
       } else {
-        toast("Invalid email or password", {
-          position: "top-right",
-        });
+        toast.error("User not found!");
       }
     } catch (error) {
       console.log(error);
@@ -38,7 +39,7 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
+ 
       <h1 className="form-title">Login Form</h1>
       <br />
       <form onSubmit={handleLogin} method="post" className="login-form">

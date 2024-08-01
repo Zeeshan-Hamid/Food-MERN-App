@@ -6,16 +6,14 @@ import { FiMenu } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
 import SearchContainer from "../Search_Container/SearchContainer";
 import axios from "axios";
-import { useCookies } from "react-cookie";
 import "./navbar.scss";
 
-const Navbar = ({ isLoggedIn, username }) => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn, username }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(false);
   const [search, setSearch] = useState("");
   const [container, setContainer] = useState(false);
   const [foodItems, setFoodItems] = useState([]);
-  const [cookies, removeCookie] = useCookies(["token"]);
   const navigate = useNavigate();
 
   const searchUrl = "http://localhost:5000/api/search";
@@ -27,12 +25,12 @@ const Navbar = ({ isLoggedIn, username }) => {
         setContainer(true);
       } else {
         setFoodItems([]);
-        setContainer(false); 
+        setContainer(false);
       }
-    }, 300); 
+    }, 300);
 
     return () => {
-      clearTimeout(handler); 
+      clearTimeout(handler);
     };
   }, [search]);
 
@@ -55,7 +53,8 @@ const Navbar = ({ isLoggedIn, username }) => {
         { withCredentials: true }
       );
 
-      removeCookie("token", { path: "/" });
+      localStorage.removeItem("user");
+
       navigate("/login");
     } catch (error) {
       console.log("Logout error:", error);

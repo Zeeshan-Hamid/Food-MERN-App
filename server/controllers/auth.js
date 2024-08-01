@@ -21,19 +21,10 @@ exports.Signup = async (req, res, next) => {
       password: password,
     });
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_KEY, {
-      expiresIn: 3 * 24 * 60 * 60,
-    });
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false, // Set to true if using https
-      sameSite: "Strict",
-    });
+    const { password: userPassword, ...userInfo } = user;
 
-    res.status(200).json({
-      error: "none",
-      message: "User signed up successfully",
-      user,
+    res.status(201).json({
+      userInfo,
     });
   } catch (error) {
     console.log("Signup Faled", error);
@@ -58,16 +49,17 @@ exports.Login = async (req, res, next) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: false, // Set to true if using https
-      sameSite: "Strict",
+      //sameSite: "Strict",
     });
 
-    res.status(200).json({
-      status: "success",
-      message: "User logged In",
-      user,
-    });
+     const { password: userPassword, ...userInfo } = user;
+
+     res.status(200).json({
+       user: userInfo,
+     });
   } catch (error) {
-  
     console.log(error);
   }
 };
+
+

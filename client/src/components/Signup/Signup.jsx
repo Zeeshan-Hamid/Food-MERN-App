@@ -23,7 +23,7 @@ const Signup = () => {
       ); // <-- Add this
       if (response.data.error === "none") {
         console.log("Signup ho gya");
-        navigate("/");
+        navigate("/login");
       } else {
         alert("ni hoa is baar bhi");
       }
@@ -34,7 +34,6 @@ const Signup = () => {
 
   return (
     <>
-      <Navbar />
       <h1 className="signup-form-title">Signup Page</h1>
       <form onSubmit={handleSubmit} method="post" className="signup-form">
         <input
