@@ -47,7 +47,7 @@ const HomePage = () => {
   return (
     <>
       <Navbar isLoggedIn={isLoggedIn} username={username} />
-      {/* <Hero /> */}
+      <Hero />
       <ToastContainer />
       <FoodList />
     </>

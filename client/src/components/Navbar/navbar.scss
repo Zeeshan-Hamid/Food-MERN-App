@@ -17,6 +17,7 @@
         display: flex;
         align-items: center;
         gap: 5px;
+        z-index: 10;
         img{
             width: 50px;
         }
@@ -35,6 +36,7 @@
 
     .searchBar{
         position: relative;
+        z-index: 10;
         input{
             padding: 10px;
             border: none;

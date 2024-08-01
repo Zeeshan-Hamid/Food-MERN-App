@@ -7,3 +7,6 @@ const SplineHero = () => {
 };
 
 export default SplineHero;
+
+
+

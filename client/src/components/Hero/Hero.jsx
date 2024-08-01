@@ -1,8 +1,14 @@
-import React from "react";
-import "./style.css";
+import "./hero.scss";
+
 import SplineHero from "../SplineHero/SplineHero";
 const Hero = () => {
-  return <SplineHero className="container" />;
+  return (
+    <div className="heroContainer">
+      <div className="hero">
+        <SplineHero />
+      </div>
+    </div>
+  );
 };
 
 export default Hero;
