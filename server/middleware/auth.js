@@ -12,8 +12,7 @@ exports.userVerification = async (req, res, next) => {
       return res.json({ status: false });
     }
     req.userId = data.id;
-    const user = await User.findById(data.id);
-    res.json({ status: true, user, message: "Token verified" });
+
     next();
   });
 };

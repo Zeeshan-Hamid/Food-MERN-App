@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaLinkedin, FaGithub } from "react-icons/fa";
 import { ImCancelCircle } from "react-icons/im";
@@ -7,8 +7,10 @@ import { CgProfile } from "react-icons/cg";
 import SearchContainer from "../Search_Container/SearchContainer";
 import axios from "axios";
 import "./navbar.scss";
+import { AuthContext } from "../../context/AuthContext";
 
-const Navbar = ({ isLoggedIn, setIsLoggedIn, username }) => {
+const Navbar = () => {
+  const { currentUser, updateUser } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(false);
   const [search, setSearch] = useState("");
@@ -52,9 +54,8 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, username }) => {
         {},
         { withCredentials: true }
       );
-
-      localStorage.removeItem("user");
-
+      setUser(false);
+      updateUser(null);
       navigate("/login");
     } catch (error) {
       console.log("Logout error:", error);
@@ -92,7 +93,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, username }) => {
         </div>
         <div className="menu">
           <div className="user">
-            {isLoggedIn ? (
+            {currentUser ? (
               <button onClick={() => toggleUser()}>
                 <CgProfile />
               </button>
@@ -100,10 +101,11 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, username }) => {
               ""
             )}
             <div className={user ? "userContainer active" : "userContainer"}>
-              {isLoggedIn ? (
+              {currentUser ? (
                 <>
                   <CgProfile />
-                  <p>{username}</p>
+                  <p>{currentUser.userName}</p>
+                  <Link to={"/profile"}>Profile</Link>
                   <button
                     onClick={() => {
                       Logout();
@@ -127,19 +129,38 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, username }) => {
         </div>
       </nav>
 
-      <div className={isOpen === true ? "subMenu active" : "subMenu"}>
+      <div
+        className={isOpen === true ? "subMenu active" : "subMenu"}
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}>
         <Link className="noUnderLine" to={"/"}>
           Home
         </Link>
-        <Link className="noUnderLine" to={"/"}>
+        <Link
+          className="noUnderLine"
+          to={"/"}
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}>
           Food
         </Link>
-        {!isLoggedIn ? (
+        {!currentUser ? (
           <>
-            <Link className="noUnderLine" to={"/login"}>
+            <Link
+              className="noUnderLine"
+              to={"/login"}
+              onClick={() => {
+                setIsOpen(!isOpen);
+              }}>
               Login
             </Link>
-            <Link className="noUnderLine" to={"/"}>
+            <Link
+              className="noUnderLine"
+              to={"/signup"}
+              onClick={() => {
+                setIsOpen(!isOpen);
+              }}>
               Signup
             </Link>
           </>

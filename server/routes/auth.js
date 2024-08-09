@@ -8,4 +8,5 @@ router.post("/verify", middlewareAuth.userVerification);
 router.post("/logout", (req, res) => {
   res.clearCookie("token").status(201).json({ message: "Logout Successful" });
 });
+router.put("/update/:id", authController.updateUser);
 module.exports = router;

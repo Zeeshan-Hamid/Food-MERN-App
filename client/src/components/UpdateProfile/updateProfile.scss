@@ -4,20 +4,16 @@
   margin-bottom: 20px;
 }
 
-.signup{
-    display: flex;
+.updateProfile {
+  display: flex;
   flex-direction: column;
   align-items: center;
   width: 300px;
   margin: auto;
-  padding: 40px;
-  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.signup-form {
-  
 }
 
 .signup-form-input {
@@ -41,11 +37,4 @@
 
 .signup-form-button:hover {
   background-color: #218838;
-}
-
-.signup-img{
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin: 15px;
 }

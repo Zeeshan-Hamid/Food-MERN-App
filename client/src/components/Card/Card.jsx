@@ -1,5 +1,4 @@
 import "./style.css";
-import { useState, CSSProperties } from "react";
 import { Link } from "react-router-dom";
 
 const Card = ({ foodItems }) => {

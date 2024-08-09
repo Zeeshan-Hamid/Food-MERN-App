@@ -10,7 +10,11 @@ router.get("/food/:id", foodController.getFood);
 
 router.get("/fullSearch", foodController.fullSearch);
 
-router.post("/", userVerification.userVerification, foodController.addFood);
+router.post(
+  "/add-food",
+  userVerification.userVerification,
+  foodController.addFood
+);
 
 router.delete(
   "/delete-food/:id",

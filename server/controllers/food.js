@@ -115,14 +115,24 @@ exports.addFood = async (req, res, next) => {
   const userId = req.userId;
 
   try {
+    const findFood = await Food.findOne({ name: body.name, user: userId });
+    if (findFood) {
+      return res
+        .status(400)
+        .json({ message: "Food with this name already exists" });
+    }
+
     const food = new Food({ ...body, user: userId });
     await food.save();
-    res.status(200).json(food);
+
+    // Ensure the response is sent only once
+    return res.status(200).json(food);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Food cant be added" });
+    return res.status(500).json({ message: "Food can't be added" });
   }
 };
+
 
 exports.deleteFood = async (req, res, next) => {
   const tokenId = req.userId;
