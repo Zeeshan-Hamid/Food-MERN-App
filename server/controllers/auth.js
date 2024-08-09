@@ -21,10 +21,8 @@ exports.Signup = async (req, res, next) => {
       password: password,
     });
 
-    const { password: userPassword, ...userInfo } = user;
-
     res.status(201).json({
-      userInfo,
+      user,
     });
   } catch (error) {
     console.log("Signup Faled", error);
@@ -52,11 +50,9 @@ exports.Login = async (req, res, next) => {
       //sameSite: "Strict",
     });
 
-     const { password: userPassword, ...userInfo } = user;
-
-     res.status(200).json({
-       user: userInfo,
-     });
+    res.status(200).json({
+      user,
+    });
   } catch (error) {
     console.log(error);
   }

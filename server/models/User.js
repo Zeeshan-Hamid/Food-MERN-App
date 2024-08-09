@@ -14,11 +14,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  cart: {
-    items: [
-      
-    ]
-  },
+  favourites: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Food",
+    },
+  ],
   createdAt: {
     type: Date,
     default: new Date(),

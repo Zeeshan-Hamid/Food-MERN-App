@@ -25,8 +25,8 @@ const Login = () => {
 
       
       if (response) {
-        console.log("response data status", response.data);
-        localStorage.setItem("user", JSON.stringify(response.data.user._doc));
+        console.log("response data status", response.data.user);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         toast.success("Congratulations!");
         navigate("/");
       } else {

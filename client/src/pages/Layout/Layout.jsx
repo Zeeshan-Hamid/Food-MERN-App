@@ -8,7 +8,7 @@ const Layout = () => {
   const navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [username, setUsername] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // New state to track login status
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const verifyCookie = async () => {
@@ -18,7 +18,7 @@ const Layout = () => {
           {},
           { withCredentials: true }
         );
-
+        console.log("data ka status", data.status);
         if (data.status) {
           console.log("User:", data.user.userName);
           setUsername(data.user.userName);
@@ -38,7 +38,7 @@ const Layout = () => {
       }
     };
     verifyCookie();
-  }, [cookies, navigate, removeCookie]);
+  }, []);
   return (
     <>
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} />
