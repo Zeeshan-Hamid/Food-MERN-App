@@ -1,0 +1,70 @@
+$favourites-bg: #f9f9f9;
+$card-bg: #fff;
+$text-color: #333;
+$border-color: #e1e1e1;
+$hover-bg: #f1f1f1;
+$loading-color: #888;
+$error-color: #d9534f;
+
+.favourites-container {
+  padding: 20px;
+
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loading,
+.error {
+  color: $loading-color;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: $error-color;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: $text-color;
+}
+
+.favourites-list {
+  list-style-type: none;
+  padding: 0;
+
+  .favourite-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 10px 0;
+    gap: 20px;
+    background-color: $card-bg;
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $hover-bg;
+    }
+
+    .food-image {
+      border-radius: 4px;
+      margin-right: 15px;
+      width: 100px;
+      height: auto;
+    }
+
+    p {
+      margin: 5px 0;
+      color: $text-color;
+    }
+  }
+}
+
+.no-favourites {
+  text-align: center;
+  font-size: 1.2rem;
+  color: $text-color;
+}

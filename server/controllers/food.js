@@ -1,8 +1,8 @@
 const Food = require("../models/Food");
 const foodItems = require("../data/data.json");
+const User = require("../models/User");
 
 exports.getAll = async (req, res, next) => {
-  
   try {
     const limit = parseInt(req.query.limit) || 8;
     const data = await Food.aggregate([{ $sample: { size: limit } }]);
@@ -133,7 +133,6 @@ exports.addFood = async (req, res, next) => {
   }
 };
 
-
 exports.deleteFood = async (req, res, next) => {
   const tokenId = req.userId;
   const foodId = req.params.id;
@@ -176,6 +175,30 @@ exports.updateFood = async (req, res, next) => {
     res.status(500).json({ message: "Food not Updated" });
   }
 };
+
+exports.addToFavourites = async (req, res, next) => {
+  const tokenId = req.params.userId;
+  const foodId = req.params.id;
+  try {
+    const user = await User.findById(tokenId);
+    if (!user) {
+      return res.status(403).json({ message: "User not found" });
+    }
+    if (user.favourites.includes(foodId)) {
+      return res.status(400).json({ message: "Food is already in favourites" });
+    }
+
+    user.favourites.push(foodId);
+    await user.save();
+    res.status(200).json({
+      message: "Food added to favourites",
+      favourites: user.favourites,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 // Function to insert movies from a JSON file into the database
 // const inseartFoodItems = async () => {

@@ -28,4 +28,8 @@ router.put(
   foodController.updateFood
 );
 
+router.post("/add-to-favourites/:id/:userId", foodController.addToFavourites);
+
+
+
 module.exports = router;

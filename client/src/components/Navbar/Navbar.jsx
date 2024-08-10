@@ -103,7 +103,15 @@ const Navbar = () => {
             <div className={user ? "userContainer active" : "userContainer"}>
               {currentUser ? (
                 <>
-                  <CgProfile />
+                  <img
+                    src={currentUser.image}
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "50%",
+                    }}
+                    alt=""
+                  />
                   <p>{currentUser.userName}</p>
                   <Link to={"/profile"}>Profile</Link>
                   <button

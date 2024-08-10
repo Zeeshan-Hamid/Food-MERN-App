@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import Favourites from "../Favourite-Items/FavouriteItems";
 import axios from "axios";
 import "./profile.scss";
 const Profile = () => {
@@ -48,6 +49,7 @@ const Profile = () => {
 
       <div className="right">
         <h2>Food You Liked</h2>
+        <Favourites />
       </div>
     </div>
   );

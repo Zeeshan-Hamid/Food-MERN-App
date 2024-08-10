@@ -4,7 +4,7 @@ const middlewareAuth = require("../middleware/auth");
 
 router.post("/signup", authController.Signup);
 router.post("/login", authController.Login);
-router.post("/verify", middlewareAuth.userVerification);
+
 router.post("/logout", (req, res) => {
   res.clearCookie("token").status(201).json({ message: "Logout Successful" });
 });

@@ -1,0 +1,56 @@
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  padding: 40px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .card-body {
+    padding: 16px;
+    text-align: center;
+
+    .card-title {
+      font-size: 1.5em;
+      margin: 0.5em 0;
+    }
+
+    .card-text {
+      color: #666;
+      margin: 0.25em 0;
+    }
+  }
+}
+
+.like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #666;
+  transition: color 0.2s;
+
+  &.liked {
+    color: rgb(255, 56, 56);
+  }
+
+  .heart-icon {
+    vertical-align: middle;
+  }
+}
