@@ -95,7 +95,7 @@ const Navbar = () => {
           <div className="user">
             {currentUser ? (
               <button onClick={() => toggleUser()}>
-                <CgProfile />
+                <CgProfile style={{color: 'black'} } />
               </button>
             ) : (
               ""
@@ -132,7 +132,7 @@ const Navbar = () => {
             onClick={() => {
               toggleMenu();
             }}>
-            {!isOpen ? <FiMenu /> : <ImCancelCircle />}
+            {!isOpen ? <FiMenu style={{ color: 'black'}} /> : <ImCancelCircle />}
           </button>
         </div>
       </nav>

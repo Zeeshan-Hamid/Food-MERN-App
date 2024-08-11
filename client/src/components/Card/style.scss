@@ -1,56 +1,207 @@
+@import '../../styles/responsive.scss';
+@import '../../styles/var.scss';
+
+.card-section{
+   h1{
+    text-align: center;
+    font-size: 42px;
+    font-family: "Lato", sans-serif;
+    span{
+      color: $primary;
+      font-style: italic;
+    }
+  }
+}
+
 .grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
-  padding: 40px;
+
+  padding:0 90px 40px 90px;
+  @include sm{
+    grid-template-columns: 1fr 1fr;
+    padding: 20px 10px;
+  }
+
+ 
 }
 
-.card {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s;
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:wght@300;400;500;600;700&display=swap');
 
-  &:hover {
-    transform: scale(1.05);
-  }
+:root {
+    --headlinesFont: 'Jost', sans-serif;
+    --bodyFont: 'Work Sans', sans-serif;
+    
+}
 
-  img {
-    width: 100%;
-    height: auto;
-    border-bottom: 2px solid #f0f0f0;
-  }
+@mixin poCentering {
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+    left: 50%;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
 
-  .card-body {
-    padding: 16px;
+
+
+img {
+    vertical-align: text-bottom;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.ft-recipe {
     text-align: center;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 3px 5px 10px #bbbbbb;
 
-    .card-title {
-      font-size: 1.5em;
-      margin: 0.5em 0;
+    overflow: hidden;
+   
+    .ft-recipe__thumb {
+        position: relative;
+        height: 200px;
+
+      
+       
+        #close-modal {
+            position: absolute;
+            top: 0; right: 0;
+            width: 36px;
+            height: 36px;
+            background: #000;
+            color: var(--white);
+            text-align: center;
+            line-height: 36px;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 1;
+            transition: all 200ms ease;
+            &:hover {
+                background: transparent;
+                color: var(--black);
+            }
+        }
+        h3 {
+            text-align: center;
+            position: absolute;
+            margin: 0;
+            width: 100%;
+            color: var(--white);
+            font-family: var(--headlinesFont);
+            font-size: 20px;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent);
+            padding: 2.4rem 0 0;
+        }
+        img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: 50% 50%;
+            z-index: 10;
+        }
+    }
+    .ft-recipe__content {
+        flex: 1;
+        padding: 0 2em 1em;
+        background-color: transparent !important;
+        .content__header {
+            .row-wrapper {
+                display: flex;
+                text-align: center;
+              
+                border-bottom: 1px solid #d8d8d8;
+                .recipe-title {
+                    font-family: var(--headlinesFont);
+                    font-weight: 600;
+                    font-size: 22px;
+                    text-align: center;
+                    
+                }
+                
+            }
+            .recipe-details {
+              text-align: center;
+                display: flex;
+                list-style: none;
+                padding: 0em 0 1em;
+                margin: 0;
+                justify-content: space-between;
+                .recipe-details-item {
+                    flex: 1;
+                    i {
+                        font-size: 20px;
+                    }
+                    .value {
+                        color: $primary;
+                        margin-left: .35em;
+                        vertical-align: bottom;
+                        font: {
+                            size: 18px;
+                            weight: 600;
+                        }
+                    }
+                    .title {
+                        display: block;
+                        margin-top: -4px;
+                        font: {
+                            family: var(--headlinesFont);
+                            size: 15px;
+                            weight: 300;
+                        }
+                    }
+                }
+            }
+
+        }
+        .description {
+            margin: 0 0 10px 0;
+            font-size: 13px;
+        }
+        .content__footer {
+            text-align: center;
+            
+           display: flex;
+           justify-content: space-between;
+          gap: 20px;
+
+          .left{
+            button{
+              padding: 8px 10px;
+              background-color: $primary;
+              border: none;
+              color: #fff;
+              border-radius: 8px;
+              cursor: pointer;
+
+              &:hover{
+                transform: scale(1.02);
+                transition: 0.3s ease;
+              }
+            }
+          }
+
+          .right{
+            button{
+              background-color: transparent;
+              border: none;
+              font-size: 25px;
+              cursor: pointer;
+            }
+
+          }
+           
+        }
     }
 
-    .card-text {
-      color: #666;
-      margin: 0.25em 0;
-    }
-  }
 }
 
-.like-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5em;
-  color: #666;
-  transition: color 0.2s;
-
-  &.liked {
-    color: rgb(255, 56, 56);
-  }
-
-  .heart-icon {
-    vertical-align: middle;
-  }
-}

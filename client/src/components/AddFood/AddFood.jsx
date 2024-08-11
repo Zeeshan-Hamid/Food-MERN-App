@@ -64,6 +64,15 @@ const AddFood = () => {
           setImage={setImage}
         />
       </div>
+      <img
+        style={{ width: "100px", textAlign: "center" }}
+        src={
+          image
+            ? image
+            : "https://png.pngtree.com/png-clipart/20191121/original/pngtree-upload-vector-icon-with-transparent-background-png-image_5156946.jpg"
+        }
+        alt=""
+      />
       <form onSubmit={handleSubmit}>
         <input
           type="text"
