@@ -1,5 +1,6 @@
-const foodData = require("../data/data.json");
 const mongoose = require("mongoose");
+const commentSchema = require('./Comments.js')
+
 
 const foodSchema = new mongoose.Schema(
   {
@@ -33,9 +34,8 @@ const foodSchema = new mongoose.Schema(
       required: true,
     },
     type: {
-      type: String, // Change from Type to String
+      type: String,
       enum: [
-        // Define the valid enum values
         "Fast Food",
         "Stew",
         "Rice Dish",
@@ -53,6 +53,12 @@ const foodSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment", 
+      },
+    ],
   },
   { timestamps: true }
 );

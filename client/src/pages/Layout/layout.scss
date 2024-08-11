@@ -1,0 +1,18 @@
+@import '../../styles/responsive.scss';
+@import '../../styles/var.scss';
+
+.outlet{
+    padding: 20px 70px;
+
+    @include lg{
+        padding: 20px 70px;
+    }
+
+    @include md{
+        padding: 20px 30px;
+    }
+
+    @include sm{
+        padding: 20px 20px;
+    }
+}

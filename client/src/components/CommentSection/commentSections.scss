@@ -1,0 +1,21 @@
+.comment-section{
+    margin-top: 40px;
+    border-top: 1px solid #ccc;
+    margin-bottom: 50px;
+    h2{
+        font-size: 30px;
+    }
+    textarea{
+        border: none;
+        border-bottom: 2px solid #ccc;
+        padding: 20px 0 0 0;
+        width: 50%;
+        font-size: 16px;
+        outline: none;
+        resize: none;
+        &:focus{
+            border-bottom: 1px solid darkgrey;
+            
+        }
+    }
+}

@@ -9,6 +9,13 @@
     box-shadow: 5px 5px 10px #555;
     position: relative;
      z-index: 10;
+     @include sm{
+                width: 250px;
+            }
+
+    @include mini{
+                width: 200px;
+    }
 
     &.hide{
         display: none;
@@ -22,7 +29,7 @@
         background-color: #fff;
         border: none;
         padding: 5px;
-        box-shadow: 1px 2px 6px #666;
+       font-size: 18px;
         border-radius: 4px;
          z-index: 10;
         
@@ -47,7 +54,16 @@
         .searchText{
             h2{
                 font-size: 20px;
-                font-weight: 300;
+                font-weight: bold;
+                @include sm{
+                font-size: 16px;
+            }
+            p{
+                font-weight: bold;
+                span{
+                    font-weight: 300;
+                }
+            }
             }
         }
     }

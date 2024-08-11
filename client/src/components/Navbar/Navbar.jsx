@@ -20,6 +20,8 @@ const Navbar = () => {
 
   const searchUrl = "http://localhost:5000/api/search";
 
+  
+
   useEffect(() => {
     const handler = setTimeout(() => {
       if (search.length >= 2) {
@@ -38,7 +40,7 @@ const Navbar = () => {
 
   const searchFoodItems = async () => {
     try {
-      let url = `${searchUrl}?search=${search}`;
+      let url = `${searchUrl}?search=${search}&limit=3`;
       const { data } = await axios.get(url);
       console.log(data);
       setFoodItems(data);
@@ -46,6 +48,7 @@ const Navbar = () => {
       console.log("Error occurred", error);
     }
   };
+
 
   const Logout = async () => {
     try {
@@ -95,7 +98,7 @@ const Navbar = () => {
           <div className="user">
             {currentUser ? (
               <button onClick={() => toggleUser()}>
-                <CgProfile style={{color: 'black'} } />
+                <CgProfile style={{ color: "black" }} />
               </button>
             ) : (
               ""
@@ -132,7 +135,11 @@ const Navbar = () => {
             onClick={() => {
               toggleMenu();
             }}>
-            {!isOpen ? <FiMenu style={{ color: 'black'}} /> : <ImCancelCircle />}
+            {!isOpen ? (
+              <FiMenu style={{ color: "black" }} />
+            ) : (
+              <ImCancelCircle style={{ color: "black" }} />
+            )}
           </button>
         </div>
       </nav>

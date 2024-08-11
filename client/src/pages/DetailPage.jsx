@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../components/Spinner/Spinner";
-import Navbar from "../components/Navbar/Navbar";
+import FoodDetail from "../components/Details/FoodDetail";
 const DetailPage = () => {
   const { id } = useParams();
   const [item, setItem] = useState(null);
@@ -31,11 +31,7 @@ const DetailPage = () => {
 
   return (
     <>
-    
-      <div>
-        <h1>{item.name}</h1>
-        <img src={item.image} alt={item.name} />
-      </div>
+    <FoodDetail item={item}/>
     </>
   );
 };

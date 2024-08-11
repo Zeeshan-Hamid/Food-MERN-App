@@ -1,23 +1,27 @@
 import "./style.scss";
 import { FaHeart } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 const Card = ({ foodItems }) => {
   const { currentUser } = useContext(AuthContext);
   const [liked, setLiked] = useState(false);
   console.log(currentUser);
-  const handleClick = async (id) => {
+  const handleClick = async (id, name) => {
     
     try {
       const userId = currentUser._id;
       const response = await axios.post(
         `http://localhost:5000/api/add-to-favourites/${id}/${userId}`
       );
+      toast.success(`${name} has been added to your favourites`)
       console.log(response.data);
     } catch (error) {
+      toast.error(`${name} is already present in favourites`);
       console.log(error);
     }
   };
@@ -71,14 +75,15 @@ const Card = ({ foodItems }) => {
 
               <footer className="content__footer">
                 <div className="left">
-                  <button>
-                    <Link to={`/food/${item._id}`}>View Details</Link>
-                  </button>
+                  <Link to={`/food/${item._id}`}>
+                    {" "}
+                    <button>View Details</button>
+                  </Link>
                 </div>
                 <div className="right">
                   <button
                     onClick={() => {
-                      handleClick(item._id);
+                      handleClick(item._id, item.name);
                       setLiked(!liked);
                     }}>
                     <FaHeart
@@ -95,6 +100,7 @@ const Card = ({ foodItems }) => {
           </div>
         ))}
       </div>
+      <ToastContainer/>
     </div>
   );
 };

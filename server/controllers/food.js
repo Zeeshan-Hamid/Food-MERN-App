@@ -29,9 +29,10 @@ exports.getFood = async (req, res, next) => {
 exports.searchFood = async (req, res, next) => {
   try {
     const search = req.query.search || "";
+    const limit = req.query.limit || 3;
     const food = await Food.find({
       name: { $regex: search, $options: "i" },
-    }).limit(4);
+    }).limit(limit);
     res.status(200).json(food);
   } catch (error) {
     console.log(error);

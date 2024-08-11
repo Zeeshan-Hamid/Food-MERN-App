@@ -1,3 +1,6 @@
+@import '../../styles/var.scss';
+@import '../../styles/responsive.scss';
+
 $favourites-bg: #f9f9f9;
 $card-bg: #fff;
 $text-color: #333;
@@ -34,6 +37,7 @@ h3 {
   list-style-type: none;
   padding: 0;
 
+
   .favourite-item {
     display: flex;
     align-items: center;
@@ -44,6 +48,7 @@ h3 {
     border: 1px solid $border-color;
     border-radius: 6px;
     transition: background-color 0.3s;
+    overflow-x: scroll;
 
     &:hover {
       background-color: $hover-bg;
@@ -52,15 +57,29 @@ h3 {
     .food-image {
       border-radius: 4px;
       margin-right: 15px;
-      width: 100px;
-      height: auto;
+      height: 70px;
+      width: 70px;
+      object-fit: contain;
+      
     }
 
     p {
       margin: 5px 0;
       color: $text-color;
     }
+   
   }
+
+   button{
+      padding: 5px 10px;
+      margin: 0 10px;
+      border: none;
+      background-color: $primary;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
 }
 
 .no-favourites {

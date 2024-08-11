@@ -2,6 +2,7 @@
 @import '../../styles/var.scss';
 
 .card-section{
+    padding: 50px 0;
    h1{
     text-align: center;
     font-size: 42px;
@@ -10,15 +11,18 @@
       color: $primary;
       font-style: italic;
     }
+    @include sm{
+        font-size: 30px;
+    }
   }
 }
 
 .grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
+  grid-gap: 20px;
 
-  padding:0 90px 40px 90px;
+ 
   @include sm{
     grid-template-columns: 1fr 1fr;
     padding: 20px 10px;
@@ -57,7 +61,7 @@ a {
 }
 
 .ft-recipe {
-    text-align: center;
+   
     background: var(--white);
     display: flex;
     flex-direction: column;
@@ -79,7 +83,7 @@ a {
             height: 36px;
             background: #000;
             color: var(--white);
-            text-align: center;
+       
             line-height: 36px;
             font-size: 22px;
             cursor: pointer;
@@ -117,14 +121,17 @@ a {
         .content__header {
             .row-wrapper {
                 display: flex;
-                text-align: center;
+                
               
                 border-bottom: 1px solid #d8d8d8;
                 .recipe-title {
                     font-family: var(--headlinesFont);
                     font-weight: 600;
                     font-size: 22px;
-                    text-align: center;
+                   
+                     @include sm{
+                        font-size: 18px;
+                     }
                     
                 }
                 

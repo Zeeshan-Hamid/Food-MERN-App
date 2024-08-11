@@ -22,7 +22,9 @@ const SearchContainer = ({ foodItems }) => {
                   </div>
                   <div className="searchText">
                     <h2>{item.name}</h2>
-                    <p>Calories: {item.calories}</p>
+                    <p>
+                      Calories: <span>{item.calories}</span>
+                    </p>
                   </div>
                 </div>
               </Link>

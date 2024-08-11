@@ -10,4 +10,9 @@ router.post(
 
 router.get("/user-favourites/:id", userController.getUserFavourites);
 
+router.delete(
+  "/delete-favourites/:userId/:id",
+  userController.deleteFromFavourites
+);
+
 module.exports = router;

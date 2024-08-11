@@ -1,0 +1,65 @@
+@import '../../styles/responsive.scss';
+@import '../../styles/var.scss';
+
+.food-details{
+    
+    .detail-flex{
+        display: flex;
+       
+   
+        align-items: center;
+
+        @include md{
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .left{
+            flex: 4;
+            width: 100%;
+            
+            img{
+                width: 85%;
+                height: 380px;
+                padding: 20px 0;
+                object-fit: contain;
+                border-radius: 15px;
+                box-shadow: 5px 8px 15px #999;
+                
+                @include sm{
+                    width: 100%;
+                }
+            }
+
+        }
+
+        .right{
+            flex: 2;
+          
+            .food-item-detail{
+                h2{
+                font-size: 20px;
+                span{
+                    font-weight: 300;
+                    
+                }
+            }
+            }
+            button{
+                padding: 10px 15px;
+                background-color: $primary;
+                color: #fff;
+                font-size: 18px;
+                border: none;
+                margin-top: 10px;
+                border-radius: 10px;
+                cursor: pointer;
+
+                &:hover{
+                    transform: scale(1.04);
+                    transition: 0.4s ease;
+                }
+            }
+        }
+    }
+}
