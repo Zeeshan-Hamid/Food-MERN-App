@@ -1,6 +1,8 @@
 const Food = require("../models/Food");
 const foodItems = require("../data/data.json");
 const User = require("../models/User");
+const Comment = require("../models/Comments");
+const mongoose  = require("mongoose");
 
 exports.getAll = async (req, res, next) => {
   try {
@@ -200,6 +202,36 @@ exports.addToFavourites = async (req, res, next) => {
   }
 };
 
+exports.addComments = async (req, res, next) => {
+  const body = req.body;
+  const id = req.params.foodId;
+  try {
+    const food = await Food.findById(id);
+    if (!food) {
+      return res.status(403).json({ message: "Food not found" });
+    }
+    const newComment = await Comment.create({ ...body, food: id });
+
+    res.status(200).json(newComment);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.getComments = async (req, res, next) => {
+  const foodId = req.params.foodId;
+  try {
+    const foodObjectId = new mongoose.Types.ObjectId(foodId);
+    const comments = await Comment.find({ food: foodObjectId });
+    if (comments.length === 0) {
+      res.status(403).json({ message: "Food not found" });
+    }
+    res.status(200).json(comments);
+  } catch (error) {
+    console.log(error);
+  }
+  
+};
 
 // Function to insert movies from a JSON file into the database
 // const inseartFoodItems = async () => {

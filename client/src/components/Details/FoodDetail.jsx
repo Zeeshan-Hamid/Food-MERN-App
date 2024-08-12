@@ -58,7 +58,7 @@ const FoodDetail = ({ item }) => {
           </div>
         </div>
         <div className="detail-comments">
-      <CommentSection/>
+          <CommentSection item={item} />
         </div>
       </div>
       <ToastContainer />

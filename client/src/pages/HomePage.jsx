@@ -8,12 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const HomePage = () => {
   const { currentUser } = useContext(AuthContext);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!currentUser) {
-      navigate("/login");
-    }
-  }, [currentUser]);
+  
   return (
     <>
       {/* <Hero /> */}

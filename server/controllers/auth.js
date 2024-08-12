@@ -6,14 +6,17 @@ const jwt = require("jsonwebtoken");
 
 exports.Signup = async (req, res, next) => {
   try {
-    const body = req.body
+    const { userName, email, password, image } = req.body;
 
-    const auth = await User.findOne({ email: body.email });
+    const auth = await User.findOne({ email });
     if (auth) {
       return res.json({ status: false, message: "User Already exists" });
     }
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = await User.create(body);
+    const user = await User.create({
+      userName, email, image, password: hashedPassword
+    });
 
     res.status(201).json({
       user,
@@ -27,28 +30,36 @@ exports.Login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
+
     if (!user) {
-      return res.status(403).json({ status: false, message: "Invalid email" });
+      return res.status(401).json({ status: false, message: "Invalid email" }); // Changed to 401
     }
+
     const passAuth = await bcrypt.compare(password, user.password);
     if (!passAuth) {
       return res
-        .status(403)
-        .json({ status: false, message: "Invalid password" });
+        .status(401)
+        .json({ status: false, message: "Invalid password" }); // Changed to 401
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_KEY, {
-      expiresIn: 3 * 24 * 60 * 60,
-    });
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false, // Set to true if using https
-      //sameSite: "Strict",
+      expiresIn: "3d", // Consider using a string for expiration
     });
 
-    res.status(200).json(user);
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // Set to true in production
+      sameSite: "Lax", // or "Strict" based on your requirements
+    });
+
+    const userResponse = user.toObject();
+    delete userResponse.password; // Remove sensitive information
+    res.status(200).json(userResponse);
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    return res
+      .status(500)
+      .json({ status: false, message: "Internal server error" });
   }
 };
 

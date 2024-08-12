@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const commentSchema = require('./Comments.js')
-
+const commentSchema = require("./Comments.js");
 
 const foodSchema = new mongoose.Schema(
   {
@@ -53,14 +52,18 @@ const foodSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    comments: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Comment", 
-      },
-    ],
   },
   { timestamps: true }
 );
+
+
+foodSchema.pre("remove", async function (next) {
+  try {
+    await mongoose.model("comments").deleteMany({ food: this._id });
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = mongoose.model("Food", foodSchema);

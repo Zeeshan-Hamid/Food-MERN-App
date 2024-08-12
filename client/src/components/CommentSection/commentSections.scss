@@ -1,3 +1,6 @@
+@import '../../styles/var.scss';
+@import '../../styles/responsive.scss';
+
 .comment-section{
     margin-top: 40px;
     border-top: 1px solid #ccc;
@@ -5,10 +8,12 @@
     h2{
         font-size: 30px;
     }
-    textarea{
+    form{
+        textarea{
         border: none;
         border-bottom: 2px solid #ccc;
         padding: 20px 0 0 0;
+        font-family: 'Lato', sans-serif;
         width: 50%;
         font-size: 16px;
         outline: none;
@@ -18,4 +23,51 @@
             
         }
     }
+    button{
+        padding: 10px 17px;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        background-color: $primary;
+        cursor: pointer;
+        font-size: 17px;
+        display: block;
+        margin: 15px 0;
+    }
+    }
+
+    .user-comments{
+        font-family: "Lato", sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 10px;
+        margin-bottom: 15px;
+        .user{
+        img{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 1px solid #333;
+        } 
+        }
+
+        .comment-container{
+            background-color: #e7e7e7;
+            width: 80%;
+            line-height: 1.6;
+            padding: 0 20px 10px 20px;
+            border-radius: 15px;
+            word-wrap: break-word;
+            .user-name{
+                font-size: 17px;
+                font-weight: bold;
+                font-style: italic;
+                margin-bottom: -10px;
+            }
+        }
+
+    }
+    
 }

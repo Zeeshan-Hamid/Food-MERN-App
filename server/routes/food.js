@@ -30,6 +30,8 @@ router.put(
 
 router.post("/add-to-favourites/:id/:userId", foodController.addToFavourites);
 
+router.post("/comment/:foodId", foodController.addComments);
 
+router.get("/comments/:foodId", foodController.getComments);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const Food = require("../models/Food.js");
 const User = require("../models/User.js");
-const mongoose = require('mongoose')
+
 
 exports.addToFavourites = async (req, res, next) => {
   const tokenId = req.userId;
@@ -35,8 +35,8 @@ exports.getUserFavourites = async (req, res, next) => {
     }
 
     const favouritesAsStrings = user.favourites.map((favourite) => ({
-      ...favourite._doc, // Spread the document's other fields
-      _id: favourite._id.toString(), // Convert the ObjectId to a string
+      ...favourite._doc, 
+      _id: favourite._id.toString(), 
     }));
 
     res.status(200).json(favouritesAsStrings);
@@ -58,18 +58,11 @@ exports.getUserFavourites = async (req, res, next) => {
         return res.status(404).json({ message: "User not found" });
       }
 
-      // Convert foodId to ObjectId for comparison
-      const foodObjectId = foodId;
 
-      // Filter out the foodId from the favourites array
-      const initialLength = user.favourites.length;
+      const foodObjectId = foodId;
       user.favourites = user.favourites.filter(
         (fav) => !fav.equals(foodObjectId)
       );
-
-      // Check if any item was actually removed
-     
-
       await user.save();
       res.status(200).json({
         message: "Food removed from favourites",
@@ -79,5 +72,8 @@ exports.getUserFavourites = async (req, res, next) => {
       console.log(error);
       res.status(500).json({ message: "An error occurred" });
     }
-  };
+};
+  
+
+
 
