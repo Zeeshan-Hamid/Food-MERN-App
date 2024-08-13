@@ -1,0 +1,31 @@
+@import '../../styles/responsive.scss';
+@import '../../styles/var.scss';
+
+
+.blog-card{
+  
+    box-shadow: 5px 5px 8px #d4d4d4;
+    border-radius: 15px;
+    
+    .top{
+        
+        img{
+            width: 100%;
+            
+            border-radius: 8px 8px 0 0px;
+        }
+    }
+
+    .body{
+        padding:20px 20px;
+        
+        h3{
+            font-size: 18px;
+            font-family: "Lato", sans-serif;
+        }
+        button{
+            @include button-styles;
+           margin-top: 10px;
+        }
+    }
+}

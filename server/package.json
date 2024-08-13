@@ -7,16 +7,19 @@
     "dev": "supervisor app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Zeeshan Hamid",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "dompurify": "^3.1.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jsdom": "^24.1.1",
     "jsonwebtoken": "^9.0.2",
+    "marked": "^14.0.0",
     "mongoose": "^8.5.1"
   }
 }

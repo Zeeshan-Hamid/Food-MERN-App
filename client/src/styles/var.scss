@@ -1,2 +1,11 @@
 $primary: #fd3535;
 $green: #04ec04;
+
+@mixin button-styles {
+  background-color: $primary;
+  color: #fff;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}

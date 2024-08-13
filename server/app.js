@@ -5,6 +5,7 @@ const dbConnect = require('./database/db')
 const foodRouter = require('./routes/food')
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
+const blogRouter = require('./routes/blog')
 const cookieParser = require("cookie-parser");
 
 const app = express();
@@ -25,11 +26,9 @@ const port = process.env._PORT;
 app.use(authRouter);
 app.use("/api", foodRouter);
 app.use("/user", userRouter);
+app.use("/blog", blogRouter)
 
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 })
-
-
-

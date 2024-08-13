@@ -6,7 +6,8 @@ import SignupPage from "./pages/SignupPage";
 import Layout from "./pages/Layout/Layout";
 import ProfilePage from "./pages/ProfilePage";
 import UpdateProfilePage from "./pages/UpdateProfilePage";
-import AddFoodPage from "./pages/AddFoodPage";
+import AddFoodPage from "./pages/AddFoodPage/AddFood";
+import BlogPage from "./pages/BlogPage/BlogPage";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const App = () => {
         {
           path: "/add-food",
           element: <AddFoodPage />,
+        },
+        {
+          path: "/blogs",
+          element: <BlogPage />,
         },
       ],
     },

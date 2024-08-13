@@ -1,0 +1,34 @@
+.blog-page{
+    padding: 30px;
+    font-family: "Lato", sans-serif;
+
+    .blog-header{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-gap: 40px;
+        margin-bottom: 30px;
+
+        .left{
+            border-radius: 10px;
+            box-shadow: 5px 5px 8px #cacaca;
+            img{
+                width: 100%;
+                height: 350px;
+                object-fit: cover;  
+                border-radius: 8px 8px 0px 0; 
+            }
+            .body{
+                padding:0 20px 20px 20px;
+                h2{
+                    font-size: 27px;
+                }
+            }
+        }
+    }
+
+    .blog-card-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+    }
+}

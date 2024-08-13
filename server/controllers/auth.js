@@ -32,28 +32,28 @@ exports.Login = async (req, res, next) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(401).json({ status: false, message: "Invalid email" }); // Changed to 401
+      return res.status(401).json({ status: false, message: "Invalid email" }); 
     }
 
     const passAuth = await bcrypt.compare(password, user.password);
     if (!passAuth) {
       return res
         .status(401)
-        .json({ status: false, message: "Invalid password" }); // Changed to 401
+        .json({ status: false, message: "Invalid password" }); 
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_KEY, {
-      expiresIn: "3d", // Consider using a string for expiration
+      expiresIn: "3d", 
     });
 
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production", // Set to true in production
-      sameSite: "Lax", // or "Strict" based on your requirements
+      sameSite: "Lax", 
     });
 
     const userResponse = user.toObject();
-    delete userResponse.password; // Remove sensitive information
+    delete userResponse.password;
     res.status(200).json(userResponse);
   } catch (error) {
     console.error(error);
