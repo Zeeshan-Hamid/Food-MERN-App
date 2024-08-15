@@ -29,8 +29,7 @@ const Profile = () => {
         <h2 className="profile_heading">
           Hello{" "}
           <span>
-            {currentUser.userName[0].toUpperCase() +
-              currentUser.userName.slice(1)}
+            {currentUser.userName}
           </span>
         </h2>
 

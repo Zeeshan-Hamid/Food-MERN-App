@@ -7,21 +7,24 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
-const Card = ({ foodItems }) => {
+const Card = ({ foodItems, liked, setLiked}) => {
   const { currentUser } = useContext(AuthContext);
-  const [liked, setLiked] = useState(false);
-  console.log(currentUser);
+
+ 
   const handleClick = async (id, name) => {
-    
     try {
-      const userId = currentUser._id;
       const response = await axios.post(
-        `http://localhost:5000/api/add-to-favourites/${id}/${userId}`
+        `http://localhost:5000/user/add-to-favourites/`,
+        { id },
+        { withCredentials: true }
       );
-      toast.success(`${name} has been added to your favourites`)
+      toast.success(`${name} has been added to your favourites`);
       console.log(response.data);
     } catch (error) {
-      toast.error(`${name} is already present in favourites`);
+      if (error.response.status === 400) {
+        toast.error(`${name} is already present in favourites`);
+      }
+
       console.log(error);
     }
   };

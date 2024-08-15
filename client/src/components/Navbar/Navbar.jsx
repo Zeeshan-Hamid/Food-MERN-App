@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaLinkedin, FaGithub } from "react-icons/fa";
 import { ImCancelCircle } from "react-icons/im";
@@ -18,9 +18,11 @@ const Navbar = () => {
   const [foodItems, setFoodItems] = useState([]);
   const navigate = useNavigate();
 
-  const searchUrl = "http://localhost:5000/api/search";
+  const userContainerRef = useRef(null);
+  const subMenuRef = useRef(null);
+  const searchContainerRef = useRef(null);
 
-  
+  const searchUrl = "http://localhost:5000/api/search";
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -49,7 +51,6 @@ const Navbar = () => {
     }
   };
 
-
   const Logout = async () => {
     try {
       await axios.post(
@@ -73,6 +74,37 @@ const Navbar = () => {
     setUser(!user);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        userContainerRef.current &&
+        !userContainerRef.current.contains(event.target)
+      ) {
+        setUser(false);
+      }
+
+      if (
+        subMenuRef.current &&
+        !subMenuRef.current.contains(event.target) &&
+        isOpen
+      ) {
+        setIsOpen(false);
+      }
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target)
+      ) {
+        setContainer(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <nav className="navbar">
@@ -90,20 +122,22 @@ const Navbar = () => {
             onChange={({ currentTarget: input }) => setSearch(input.value)}
           />
           <FaSearch className="searchIcon" />
-          <div className="foodContainer">
+          <div className="foodContainer" ref={searchContainerRef}>
             {container ? <SearchContainer foodItems={foodItems} /> : ""}
           </div>
         </div>
         <div className="menu">
           <div className="user">
             {currentUser ? (
-              <button onClick={() => toggleUser()}>
+              <button onClick={toggleUser}>
                 <CgProfile style={{ color: "black" }} />
               </button>
             ) : (
               ""
             )}
-            <div className={user ? "userContainer active" : "userContainer"}>
+            <div
+              ref={userContainerRef}
+              className={user ? "userContainer active" : "userContainer"}>
               {currentUser ? (
                 <>
                   <img
@@ -117,12 +151,7 @@ const Navbar = () => {
                   />
                   <p>{currentUser.userName}</p>
                   <Link to={"/profile"}>Profile</Link>
-                  <button
-                    onClick={() => {
-                      Logout();
-                    }}>
-                    Logout
-                  </button>
+                  <button onClick={Logout}>Logout</button>
                 </>
               ) : (
                 <>
@@ -131,10 +160,7 @@ const Navbar = () => {
               )}
             </div>
           </div>
-          <button
-            onClick={() => {
-              toggleMenu();
-            }}>
+          <button onClick={toggleMenu}>
             {!isOpen ? (
               <FiMenu style={{ color: "black" }} />
             ) : (
@@ -145,47 +171,27 @@ const Navbar = () => {
       </nav>
 
       <div
+        ref={subMenuRef}
         className={isOpen === true ? "subMenu active" : "subMenu"}
-        onClick={() => {
-          setIsOpen(!isOpen);
-        }}>
+        onClick={toggleMenu}>
         <Link className="noUnderLine" to={"/"}>
           Home
         </Link>
-        <Link
-          className="noUnderLine"
-          to={"/"}
-          onClick={() => {
-            setIsOpen(!isOpen);
-          }}>
+        <Link className="noUnderLine" to={"/"} onClick={toggleMenu}>
           Food
         </Link>
         {!currentUser ? (
           <>
-            <Link
-              className="noUnderLine"
-              to={"/login"}
-              onClick={() => {
-                setIsOpen(!isOpen);
-              }}>
+            <Link className="noUnderLine" to={"/login"} onClick={toggleMenu}>
               Login
             </Link>
-            <Link
-              className="noUnderLine"
-              to={"/signup"}
-              onClick={() => {
-                setIsOpen(!isOpen);
-              }}>
+            <Link className="noUnderLine" to={"/signup"} onClick={toggleMenu}>
               Signup
             </Link>
           </>
         ) : (
           <>
-            <Link
-              className="noUnderLine"
-              onClick={() => {
-                Logout();
-              }}>
+            <Link className="noUnderLine" onClick={Logout}>
               LogOut
             </Link>
           </>
@@ -197,9 +203,7 @@ const Navbar = () => {
       </div>
       <div
         className={isOpen ? "shadow active" : "shadow"}
-        onClick={() => {
-          toggleMenu();
-        }}></div>
+        onClick={toggleMenu}></div>
     </>
   );
 };

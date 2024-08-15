@@ -3,7 +3,7 @@ const userController = require("../controllers/user.js");
 const userVerification = require("../middleware/auth.js");
 
 router.post(
-  "/add-to-favourites/:id",
+  "/add-to-favourites",
   userVerification.userVerification,
   userController.addToFavourites
 );

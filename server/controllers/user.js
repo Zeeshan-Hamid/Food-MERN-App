@@ -4,7 +4,7 @@ const User = require("../models/User.js");
 
 exports.addToFavourites = async (req, res, next) => {
   const tokenId = req.userId;
-  const foodId = req.params.id;
+  const foodId = req.body.id;
   try {
     const user = await User.findById(tokenId);
     if (!user) {

@@ -28,7 +28,6 @@ router.put(
   foodController.updateFood
 );
 
-router.post("/add-to-favourites/:id/:userId", foodController.addToFavourites);
 
 router.post("/comment/:foodId", foodController.addComments);
 

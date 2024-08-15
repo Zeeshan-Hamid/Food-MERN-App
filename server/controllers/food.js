@@ -179,28 +179,6 @@ exports.updateFood = async (req, res, next) => {
   }
 };
 
-exports.addToFavourites = async (req, res, next) => {
-  const tokenId = req.params.userId;
-  const foodId = req.params.id;
-  try {
-    const user = await User.findById(tokenId);
-    if (!user) {
-      return res.status(403).json({ message: "User not found" });
-    }
-    if (user.favourites.includes(foodId)) {
-      return res.status(400).json({ message: "Food is already in favourites" });
-    }
-
-    user.favourites.push(foodId);
-    await user.save();
-    res.status(200).json({
-      message: "Food added to favourites",
-      favourites: user.favourites,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 exports.addComments = async (req, res, next) => {
   const body = req.body;
